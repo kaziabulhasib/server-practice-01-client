@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./App.css";
 // import axios from "axios";
 import axios from "axios";
@@ -15,6 +16,7 @@ function App() {
     axios.post("http://localhost:8000/users", user).then((res) => {
       console.log(res.data);
       if (res.data) {
+        Swal.fire("User added successfully.");
         form.reset();
       }
     });

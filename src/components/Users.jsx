@@ -32,20 +32,42 @@ const Users = () => {
       }
     });
   };
+
+  // handle details
+  const handleDetails = (id) => {
+    console.log(id);
+  };
+
+  // handle update
+  const handleUpdate = (id) => {
+    console.log(id);
+  };
   return (
     <div>
       <Link to='/'>Home</Link>
-      <h1>Users:{users.length}</h1>
+      <h1 className='text-3xl my-8 underline '>Users:{users.length}</h1>
       {users.map((user) => (
         <>
-          <div className='flex gap-8  items-center my-8' key={user._id}>
+          <div
+            className='flex gap-8 justify-center  items-center my-8'
+            key={user._id}>
             <h1>{user.name} </h1>
 
             <h1> {user.email}</h1>
             <button
-              className='px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80'
+              className='px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-lg hover:bg-red-500 focus:outline-none focus:ring focus:ring-red-300 focus:ring-opacity-80'
               onClick={() => handleDelete(user._id)}>
               Delete
+            </button>
+            <button
+              onClick={() => handleDetails(user._id)}
+              className='px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80'>
+              Details
+            </button>
+            <button
+              onClick={() => handleUpdate(user._id)}
+              className='px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80'>
+              Update
             </button>
           </div>
         </>
