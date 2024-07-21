@@ -3,8 +3,12 @@ import Swal from "sweetalert2";
 import "./App.css";
 // import axios from "axios";
 import axios from "axios";
+// import { toast } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  // const notify = () => toast("Wow so easy!");
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,7 +20,14 @@ function App() {
     axios.post("http://localhost:8000/users", user).then((res) => {
       console.log(res.data);
       if (res.data) {
-        Swal.fire("User added successfully.");
+        toast.success("added successfully!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          theme: "light",
+        });
+
         form.reset();
       }
     });
@@ -49,6 +60,7 @@ function App() {
           type='submit'
           value='Submit'
         />{" "}
+        <ToastContainer />
       </form>
     </>
   );
