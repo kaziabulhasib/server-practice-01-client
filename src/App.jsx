@@ -60,6 +60,10 @@ function App() {
           type='submit'
           value='Submit'
         />{" "}
+        <p>
+          Already user ?{" "}
+          <span className='text-sm text-blue-400 underline'>Login</span>
+        </p>
         <ToastContainer />
       </form>
     </>
