@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserDetails from "./components/UserDetails.jsx";
 // import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
+import UpdateUser from "./components/UpdateUser.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
   {
     path: "/users/:id",
     element: <UserDetails />,
+    loader: ({ params }) => fetch(`http://localhost:8000/users/${params.id}`),
+  },
+  {
+    path: "/update/:id",
+    element: <UpdateUser />,
     loader: ({ params }) => fetch(`http://localhost:8000/users/${params.id}`),
   },
 ]);

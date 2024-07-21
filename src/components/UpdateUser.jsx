@@ -1,35 +1,14 @@
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import "./App.css";
-// import axios from "axios";
-import axios from "axios";
-// import { toast } from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
-function App() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const user = { name, email };
-    console.log(user);
-
-    axios.post("http://localhost:8000/users", user).then((res) => {
-      console.log(res.data);
-      if (res.data) {
-        Swal.fire("user added sucessfully!");
-        form.reset();
-      }
-    });
-  };
+const UpdateUser = () => {
+  const handleUpdate = () => {};
+  const user = useLoaderData();
   return (
-    <>
-      <div className='flex justify-center gap-8'>
-        <h1 style={{ color: "red" }}>Simple Crud operation</h1>
-        <Link to='/users'>Users</Link>
-      </div>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <h1>Update user : {user.name}</h1>
+      <form onSubmit={handleUpdate}>
         <input
+          defaultValue={user.name}
           className='  mt-2 placeholder-gray-400/70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700  '
           type='text'
           name='name'
@@ -38,6 +17,7 @@ function App() {
         />{" "}
         <br />
         <input
+          defaultValue={user.email}
           className='  mt-2 placeholder-gray-400/70 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-gray-700  '
           type='text'
           name='email'
@@ -55,8 +35,8 @@ function App() {
           <span className='text-sm text-blue-400 underline'>Login</span>
         </p>
       </form>
-    </>
+    </div>
   );
-}
+};
 
-export default App;
+export default UpdateUser;
