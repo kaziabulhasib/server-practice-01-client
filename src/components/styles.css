@@ -1,0 +1,38 @@
+.App {
+  display: flex;
+  font-family: sans-serif;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pagination {
+  list-style: none;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #1e50ff;
+  border-radius: 50%;
+  color: white;
+}
+
+.page-item {
+  list-style: none;
+  padding: 4px 12px;
+  height: 31.5px;
+  width: 31.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid red;
+  margin: 2px 8px;
+}

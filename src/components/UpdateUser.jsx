@@ -1,9 +1,11 @@
 import axios from "axios";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateUser = () => {
   const user = useLoaderData();
-  const { id } = useParams();
+  // const { id } = useParams();
+  const navigate = useNavigate();
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -13,9 +15,15 @@ const UpdateUser = () => {
     const updatedUser = { name, email };
     console.log("updated user", updatedUser);
     // console.log(user);
-    axios.put(`http://localhost:8000/update/${id}`, updatedUser).then((res) => {
-      console.log(res.data);
-    });
+    axios
+      .put(`http://localhost:8000/update/${user._id}`, updatedUser)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+          Swal.fire("User Updated Successfully!");
+          navigate("/users");
+        }
+      });
   };
 
   return (

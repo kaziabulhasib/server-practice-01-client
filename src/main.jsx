@@ -8,10 +8,12 @@ import UserDetails from "./components/UserDetails.jsx";
 // import { Toaster } from "react-hot-toast";
 import { ToastContainer } from "react-toastify";
 import UpdateUser from "./components/UpdateUser.jsx";
+// import Pagination from "./pagination/Pagination.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    // element: <Pagination />,
   },
   {
     path: "/users",
