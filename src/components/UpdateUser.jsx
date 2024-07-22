@@ -1,8 +1,23 @@
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const UpdateUser = () => {
-  const handleUpdate = () => {};
   const user = useLoaderData();
+  const { id } = useParams();
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const updatedUser = { name, email };
+    console.log("updated user", updatedUser);
+    // console.log(user);
+    axios.put(`http://localhost:8000/update/${id}`, updatedUser).then((res) => {
+      console.log(res.data);
+    });
+  };
+
   return (
     <div>
       <h1>Update user : {user.name}</h1>
@@ -31,8 +46,10 @@ const UpdateUser = () => {
           value='Submit'
         />{" "}
         <p>
-          Already user ?{" "}
-          <span className='text-sm text-blue-400 underline'>Login</span>
+          Back to{" "}
+          <Link to='/users'>
+            <span className='text-sm text-blue-400 underline'>Users Page </span>
+          </Link>
         </p>
       </form>
     </div>
